@@ -1,9 +1,9 @@
 const express = require("express");
-const { getAccessToken } = require("./controllers/twitchController");
+// const { getAccessToken } = require("./controllers/finnController");
 
 const router = express.Router();
 
-router.post("/get_access_token", getAccessToken);
+// router.post("/", getAccessToken);
 
 module.exports = {
   router,
