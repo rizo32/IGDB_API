@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/">index</a></li>
+          <li><a href="/stocks">Stocks</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <main id="app">
+
+      <%- body %>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 My Company</p>
+    </footer>
+    <script type="module" src="/static/js/index.js" crossorigin></script>
+  </body>
+</html>

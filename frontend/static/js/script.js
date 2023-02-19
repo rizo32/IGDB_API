@@ -1,6 +1,6 @@
 import Dashboard from "./views/Dashboard.js";
 import Posts from "./views/Posts.js";
-// import Stocks from "../../../views/Stocks.ejs";
+import Stocks from "../../../Stocks.js";
 import Settings from "./views/Settings.js";
 import PostView from "./views/PostView.js";
 
@@ -15,15 +15,13 @@ const getParams = match => {
         return [key, values[i]]
     }))
 }
-console.log("heloi");
-
 
 
 const router = async() => {
     const routes = [
         { path: "/", view:Dashboard },
         { path: "/posts", view:Posts },
-        // { path: "/stocks", view:Stocks },
+        { path: "/stocks", view:Stocks },
         { path: "/settings", view:Settings },
         { path: "/post-view/:id", view:PostView }
     ]
@@ -45,8 +43,6 @@ const router = async() => {
             result: [location.pathname]
         }
     }
-
-    
 
     // console.log(match);
     const view = new match.route.view(getParams(match));
