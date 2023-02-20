@@ -1,33 +1,8 @@
-// import Stocks from "../../../views/Stocks.ejs";
 import Dashboard from "./views/Dashboard.js";
-
-
-
-
-
-const view_stock = async() => {
-    const stockArray = window.location.href.split("/");
-    const stock = stockArray[stockArray.length - 1];
-    const response = await fetch(`/stockView/${stock}`);
-    const html = await response.text();
-    return html;
-    // console.log(html2);
-}
-
-const view_stocks = () => {
-    return fetch('/stocks')
-      .then(response => response.text())
-      .catch(error => console.error(error));
-};
-
-// const view_stocks = async() => {
-//     const response = await fetch('/stocks');
-//     const html = await response.text();
-//     return html;
-// }
-
-
-
+import Posts from "./views/Posts.js";
+// import Stocks from "../../../views/Stocks.ejs";
+import Settings from "./views/Settings.js";
+import PostView from "./views/PostView.js";
 
 const pathToRegex = path => new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
 
@@ -40,13 +15,17 @@ const getParams = match => {
         return [key, values[i]]
     }))
 }
+console.log("heloi");
+
 
 
 const router = async() => {
     const routes = [
         { path: "/", view:Dashboard },
-        { path: "/stocks", view:view_stocks },
-        { path: `/stockView/:name`, view:view_stock },
+        { path: "/posts", view:Posts },
+        // { path: "/stocks", view:Stocks },
+        { path: "/settings", view:Settings },
+        { path: "/post-view/:id", view:PostView }
     ]
 
     // match
@@ -68,12 +47,13 @@ const router = async() => {
     }
 
     
-    const view = await match.route.view();
 
-    // const view = new match.route.view(getParams(match));
+    // console.log(match);
+    const view = new match.route.view(getParams(match));
 
-    // document.querySelector('#app').innerHTML = html;
-    document.querySelector('#app').innerHTML = view;
+    console.log(match);
+    // if(view )
+    document.querySelector('#app').innerHTML = await view.getHtml();
 }
 
 const navigateTo = url => {
@@ -85,10 +65,10 @@ window.addEventListener('popstate', router);
 
 document.addEventListener("DOMContentLoaded", () => {
     document.body.addEventListener("click", e=>{
-        // if(e.target.matches("[data-link]")){
+        if(e.target.matches("[data-link]")){
             e.preventDefault();
             navigateTo(e.target.href);
-        // }
+        }
     })
     router();
 })

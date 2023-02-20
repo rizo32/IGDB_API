@@ -1,7 +1,8 @@
 
-<h1>Stock View</h1>
+<h1>All the stocks!</h1>
     <ul>
-        <% data.stocks.forEach(function(stock) { %>
-            <li><%= stock %></li>
+        <% data.forEach(function(stock) { %>
+            <li><a href="/stockView/<%= stock %>"</a> <%= stock %> </li>
         <% }); %>
     </ul>
+

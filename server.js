@@ -1,36 +1,83 @@
-const express = require('express');
-const expressLayouts = require('express-ejs-layouts');
-const path = require('path');
-const ejs = require('ejs');
+const express = require("express");
+const expressLayouts = require("express-ejs-layouts");
+const path = require("path");
+const ejs = require("ejs");
 const app = express();
 
-// on crée une exception, il va toujours rouler le js
-app.use("/static", express.static(path.resolve(__dirname, "frontend", "static")));
+const stocks = require("./frontend/static/upload/stock_titles.json");
 
-app.set('view engine', 'ejs');
+// on crée une exception, il va toujours rouler le js
+app.use(
+	"/static",
+	express.static(path.resolve(__dirname, "frontend", "static"))
+);
+
+app.set("view engine", "ejs");
 // app.set('layout', './views/layout');
 app.use(expressLayouts);
 
-app.set('views', path.join(__dirname, 'views'));
+app.set("views", path.join(__dirname, "views"));
 
 // app.get('/', (req, res) => {
 //   res.render('home', { title: 'Home', layout: 'layout' });
 // });
 
-app.get('/stocks', (req, res) => {
-    // const data = "data";
-    // const data = stocks;
-    const data = { stocks: ['AAPL', 'GOOG', 'FB'] }; // example data
-    // res.setHeader('Content-Type', 'application/json');
-    // res.send(`const stocks = ${JSON.stringify(data)};`);
-    // res.send(JSON.stringify(data));
-    // res.sendFile(path.resolve(__dirname, 'views', "Stocks.ejs"));
-    res.render('stocks', { title: 'stocks', layout: 'layout', data: data });
+app.get("/stocks", (req, res) => {
+	// const data = "data";
+	// const data = stocks;
+	const data = stocks;
+
+	// res.setHeader('Content-Type', 'application/json');
+	// res.send(`const stocks = ${JSON.stringify(data)};`);
+	// res.send(JSON.stringify(data));
+	// res.sendFile(path.resolve(__dirname, 'views', "Stocks.ejs"));
+	res.render("stocks", { title: "stocks", layout: "layout", data: data });
+
+    // ejs.renderFile("stocks.ejs", data, (err, html) => {
+	// 	if (err) {
+	// 		console.log(err);
+	// 		return res.status(500).end();
+	// 	}
+	// 	res.send(html);
+	// });
 });
 
+app.get("/stockView/:name", (req, res) => {
+	stockName = req.params.name;
+	// const data = "data";
+	// const data = stocks;
+	const data = stockName;
+	// res.setHeader('Content-Type', 'application/json');
+	// res.send(`const stocks = ${JSON.stringify(data)};`);
+	// res.send(JSON.stringify(data));
+	// res.sendFile(path.resolve(__dirname, 'views', "Stocks.ejs"));
+    
 
-app.get("/*", function(req, res){
-    res.sendFile(path.resolve(__dirname, "frontend", "index.html"));
-})
+	// ejs.renderFile("stockView.ejs", data, (err, html) => {
+	// 	if (err) {
+	// 		console.log(err);
+	// 		return res.status(500).end();
+	// 	}
+	// 	res.send(html);
+	// });
+
+	res.render("stockView", { title: "stockView", layout: "layout", data: data, });
+});
+
+// AVEC SEND !!!
+// app.get("/template", (req, res) => {
+// 	const data = { name: "John Doe" };
+// 	ejs.renderFile("path/to/template.ejs", data, (err, html) => {
+// 		if (err) {
+// 			console.log(err);
+// 			return res.status(500).end();
+// 		}
+// 		res.send(html);
+// 	});
+// });
+
+app.get("/*", function (req, res) {
+	res.sendFile(path.resolve(__dirname, "frontend", "index.html"));
+});
 
 app.listen(8081, () => console.log("server running..."));
