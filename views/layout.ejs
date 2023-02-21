@@ -2,25 +2,36 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
   </head>
   <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="/stocks">Stocks</a></li>
-        </ul>
-      </nav>
-    </header>
+    <header id="top">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+          <div class="container">
+              <a href="/" class="navbar-brand">Home</a>
+              <div class="container navbar-nav">    
+                  <a href="/stocks" class="nav-link">Stocks</a>
+              </div>
+          </div>
+        </nav>
+      </header>
+  
     
-    <main id="app">
+    <main class="container my-5 full-page" id="app">
 
       <%- body %>
     </main>
 
-    <footer>
-      <p>&copy; 2023 My Company</p>
+    <footer class="p-5 bg-dark text-white text-center position-relative">
+        <div class="container">
+            <p class="lead">&copy; 2023 My Company</p>
+            <!-- <a href="#top" class="position-absolute bottom-0 end-0 p-5">
+                <i class="bi bi-arrow-up-circle h1"></i>
+            </a> -->
+        </div>
     </footer>
     <script type="module" src="/static/js/index.js" crossorigin></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </body>
 </html>

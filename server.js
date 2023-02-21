@@ -4,7 +4,14 @@ const path = require("path");
 const ejs = require("ejs");
 const app = express();
 
+// const { PORT } = require("./config");
+// const { update_stock_titles } = require("./web_scraping");
+const { fetchCandles } = require("./finnController");
+
+// app.get('/candles=:symbol', fetchCandles);
+
 const stocks = require("./frontend/static/upload/stock_titles.json");
+
 
 // on crée une exception, il va toujours rouler le js
 app.use(
@@ -42,11 +49,13 @@ app.get("/stocks", (req, res) => {
 	// });
 });
 
-app.get("/stockView/:name", (req, res) => {
-	stockName = req.params.name;
+app.get("/stockView/:name", async (req, res) => {
+    stockName = req.params.name;
 	// const data = "data";
 	// const data = stocks;
-	const data = stockName;
+    const data = await fetchCandles(stockName);
+    
+
 	// res.setHeader('Content-Type', 'application/json');
 	// res.send(`const stocks = ${JSON.stringify(data)};`);
 	// res.send(JSON.stringify(data));

@@ -1,3 +1,9 @@
 
 <h1>Stock View</h1>
-    <p> <%= data %> </p>
+<canvas id="myChart" class="my-3"></canvas>
+<h2 class="mt-5">Daily closing prices (previous month)</h2>
+<ul class="list-group list-group-flush lead my-3">
+<% data.forEach(function(stock) { %>
+    <li class="list-group-item"><%= stock %></li>
+    <% }); %>
+</ul>

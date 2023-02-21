@@ -1,4 +1,4 @@
-import AbstractView from '../views_old/AbstractView.js';
+import AbstractView from '../views/AbstractView.js';
 
 export default class extends AbstractView{
     constructor(params){
@@ -8,11 +8,9 @@ export default class extends AbstractView{
 
     async getHtml() {
         return `
-        <h1>Bienvenu SPA</h1>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore, quam! Perspiciatis nihil voluptatum dicta a ducimus! A cumque libero esse sint corporis et doloribus nostrum, deserunt minima. Magni, aut sunt!</p>
-        <p>
-            <a href="/posts" data-link>Voir les publications</a>
-        </p>
+        <h1>Bienvenue Marcos!</h1>
+        <p class="py-3">Le seul et unique visiteur de cette page!</p>
+        <p class="btn btn-primary">J'accepte les dons</p>
         `;
     }
 }

@@ -1,8 +1,13 @@
 
 <h1>All the stocks!</h1>
-    <ul>
-        <% data.forEach(function(stock) { %>
-            <li><a href="/stockView/<%= stock %>"</a> <%= stock %> </li>
-        <% }); %>
-    </ul>
+    <p> Results: 1 - 100</p>
+    <ul class="list-group list-group-flush lead mt-3">
 
+        <% for (let i = 0; i <= 100; i++) { %>
+            <% const stock = data[i]; %>
+            <li class="list-group-item">
+                <a href="/stockView/<%= stock %>" class="fw-bold"><%= stock %></a>
+            </li>
+        <% } %>
+
+    </ul>
