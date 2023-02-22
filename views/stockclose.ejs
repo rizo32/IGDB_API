@@ -1,0 +1,14 @@
+
+<h1>Stock View</h1>
+<canvas id="myChart" class="my-3"></canvas>
+<h2 class="mt-5">Daily closing prices</h2>
+<ul class="list-group list-group-flush my-3 grid">
+<% for (let i = data.length - 1; i > 0; i--) { %>
+    <% const stock = data[i]; %>
+
+    <li class="list-group-item lead">
+        <%= i %> business days ago:
+        <span id="stockclose" class="px-1 fw-bold"><%= stock %></span>
+    </li>
+    <% } %>
+</ul>

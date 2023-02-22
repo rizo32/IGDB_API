@@ -8,6 +8,7 @@ a {
     box-sizing: border-box;
 }
 
-/* #myChart {
-    height: 400px !important;
-} */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
