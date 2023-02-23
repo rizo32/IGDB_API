@@ -37,5 +37,5 @@ Notez que node.js doit avoir été téléchargé pour que les commandes suivante
 
 La navigation "Stocks" permet de voir un affichage des stocks disponible, et les liens avec des périodes permettent d'afficher un graphique des résultats du titre à travers cet interval de temps.
 
-<b>Pro tip:</b> Vous pouvez également indiquer un nombre de jour (ouvrable) précis dans l'URL pour avoir un interval spécifique.
+<b>Pro tip:</b> Vous pouvez également indiquer un nombre de jour précis dans l'URL pour avoir un interval spécifique.
 
