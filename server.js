@@ -28,6 +28,7 @@ const startServer = async () => {
 
 	app.set("view engine", "ejs");
 
+    // Utilisation d'un layout
 	app.use(expressLayouts);
 
 	app.set("views", path.join(__dirname, "views"));
