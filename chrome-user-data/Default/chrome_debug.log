@@ -1,2 +1,0 @@
-[0222/193023.659:INFO:CONSOLE(6)] "Uncaught SyntaxError: Failed to execute 'querySelector' on 'Document': './portfolio' is not a valid selector.", source: https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js (6)
-[0222/193023.660:INFO:CONSOLE(5)] "Uncaught Error: GET_ELEMENTS: page-top -> form[data-sb-form-api-token]", source: https://cdn.startbootstrap.com/sb-forms-latest.js (5)
